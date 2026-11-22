@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f4ea">
+  <meta name="description" content="从小板子里掉出来的手写问候。">
+  <title>今天也要开心呀 (๑•ᴗ•๑)</title>
+  <link rel="icon" type="image/png" sizes="96x96" href="./flower-icon.png">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./backdrop.js"></script>
+  <script defer src="./messages.js"></script>
+  <script defer src="./opening.js"></script>
+  <script defer src="./finale.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <canvas class="outer-art" aria-hidden="true"></canvas>
+  <div class="falling-petals" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <main class="station">
+    <canvas class="opening-art" aria-hidden="true" hidden></canvas>
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <button type="button" class="flower-trigger" id="flower-trigger" aria-label="看看小红花">
+            <span class="spinning-flower" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </span>
+          </button>
+          来自小板子的问候
+        </p>
+        <h1>今天也要开心呀 <span class="title-face" aria-hidden="true">(๑•ᴗ•๑)</span></h1>
+        <p class="intro">点一张纸条，看看今天想对你说什么。</p>
+      </div>
+      <div class="sticker">
+        <img src="./pcb-front.webp" alt="" width="347" height="360">
+        <span class="sticker-star" aria-hidden="true">✦</span>
+        <span class="music-sparks" aria-hidden="true"></span>
+        <button type="button" class="sticker-toggle" id="music-action" aria-label="播放音乐" title="播放音乐" hidden>
+          <span aria-hidden="true">♫</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="board" aria-label="问候纸条">
+      <canvas class="circuit" aria-hidden="true"></canvas>
+      <div class="notes" id="notes"></div>
+      <div class="finale" id="finale" hidden>
+        <div class="finale-paper" aria-hidden="true">♡</div>
+        <canvas class="finale-art" role="img" aria-label="彩纸拼成的比心手势"></canvas>
+        <button type="button" class="show-notes" id="show-notes">看纸条</button>
+      </div>
+    </section>
+
+    <footer class="controls">
+      <button type="button" class="round-action" id="round-action">
+        <span class="action-icon" id="action-icon" aria-hidden="true">⋯</span>
+        <span id="action-label">直接看完</span>
+      </button>
+      <button type="button" class="about-action" id="about-action" aria-label="关于这块小板子" title="关于这块小板子">
+        <span class="about-envelope" aria-hidden="true">
+          <img src="./flower-icon.png" alt="" width="10" height="10">
+        </span>
+      </button>
+    </footer>
+    <noscript>请启用 JavaScript 来打开纸条。</noscript>
+  </main>
+
+  <dialog class="letter" id="letter" aria-labelledby="letter-title">
+    <div class="letter-envelope" aria-hidden="true">
+      <div class="envelope-flap"></div>
+      <div class="envelope-seal">
+        <img src="./flower-icon.png" alt="" width="30" height="30">
+      </div>
+    </div>
+    <div class="letter-inner">
+      <form method="dialog">
+        <button type="submit" class="close" aria-label="合上信件" autofocus>×</button>
+      </form>
+      <span class="letter-flower" aria-hidden="true">✿</span>
+      <h2 id="letter-title">关于这块小板子</h2>
+      <div id="letter-body"></div>
+      <img class="pcb-back-mark" src="./pcb-back-mark.png" alt="" width="222" height="95">
+      <small class="music-credit" id="music-credit" hidden>
+        配乐 <a class="music-credit-source" target="_blank" rel="noopener"></a>
+        <span class="music-credit-change"></span>
+        <a class="music-credit-license" target="_blank" rel="noopener"></a>
+      </small>
+    </div>
+  </dialog>
+  <dialog class="note-reader" id="note-reader" aria-label="小纸条" aria-describedby="reader-text">
+    <div class="paper reader-paper">
+      <button type="button" class="close" id="reader-close" aria-label="合上纸条" autofocus>×</button>
+      <span class="note-mark" id="reader-mark" aria-hidden="true"></span>
+      <p id="reader-text" aria-live="polite"></p>
+    </div>
+    <div class="reader-actions">
+      <button type="button" class="reader-nav" id="reader-prev" aria-label="上一张" hidden>‹</button>
+      <button type="button" class="reader-nav" id="reader-next" aria-label="下一张" hidden>›</button>
+    </div>
+  </dialog>
+  <audio id="background-music" autoplay loop preload="none"></audio>
+</body>
+</html>
