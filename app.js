@@ -27,7 +27,7 @@ const finale = createFinale(document.querySelector("#finale"));
 const paperAudio = createPaperAudio(player);
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
-const revealTime = 4750;
+const revealTime = 7200;
 const firstNoteTime = 740;
 const firstNoteLead = 160;
 const pauseBeforeFinale = 1350;
